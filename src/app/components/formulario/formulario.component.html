@@ -1,0 +1,47 @@
+<div class="container">
+    <form class="example-form" >
+      <mat-form-field class="example-full-width">
+        <mat-label>Registro de empresa</mat-label>
+        <input matInput disabled value="Empresa">
+      </mat-form-field>
+    
+      <table class="example-full-width" cellspacing="0"><tr>
+        <td><mat-form-field class="example-full-width">
+          <mat-label>Id</mat-label>
+          <input type="text" id="id" matInput #newId [(ngModel)]="id" [ngModelOptions]="{standalone:true}">
+        </mat-form-field></td>
+  
+        <td><mat-form-field class="example-full-width">
+          <mat-label>Nombre</mat-label>
+          <input type="text" id="nombre" matInput #newName [(ngModel)]="name" [ngModelOptions]="{standalone:true}">
+        </mat-form-field></td>
+      </tr></table>
+    
+      <p>
+        <mat-form-field class="example-full-width" >
+          <mat-label>NIT</mat-label>
+          <input id="nit" matInput #newNit [(ngModel)]="nit" [ngModelOptions]="{standalone:true}"> 
+        </mat-form-field>
+  
+        <mat-form-field class="example-full-width" >
+          <mat-label>Direccion</mat-label>
+          <input id="direccion" matInput #newAdress [(ngModel)]="adress" [ngModelOptions]="{standalone:true}">
+        </mat-form-field>
+  
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Choose a date</mat-label>
+          <input id="fFundacion" matInput [matDatepicker]="picker" #newDate [(ngModel)]="date" [ngModelOptions]="{standalone:true}" >
+          <mat-hint>MM/DD/YYYY</mat-hint>
+          <mat-datepicker-toggle matIconSuffix [for]="picker">
+            <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+          </mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+           
+      </p>
+      <button mat-button (click)="addCompany(newId,newName,newNit,newAdress,newDate)"  [disabled]="isEdit" *ngIf="!isEdit">Ingresar</button>
+      <button mat-button (click) ="updateCompany(newId,newName,newNit,newAdress,newDate)"  [disabled]="!isEdit" *ngIf="isEdit == true">Actualizar</button>
+         
+    </form>
+  </div>
+  
